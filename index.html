@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ocaq Home — Yumşaq mebel</title>
+<meta name="description" content="Ocaq Home — Bakıda hazırlanan divan, kreslo və çarpayılar. Sifarişlə istehsal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1ea; --card:#fffdf9; --ink:#2a2420; --muted:#7a6e64;
+  --accent:#8a5a3b; --accent-2:#c9a27e; --line:#e6dccf; --ok:#3d7a4f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:inherit}
+header{position:sticky;top:0;z-index:10;background:rgba(246,241,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1180px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;letter-spacing:.5px;text-decoration:none}
+.logo span{color:var(--accent)}
+nav a{font-size:14px;text-decoration:none;color:var(--muted);margin-left:18px}
+nav a:hover{color:var(--ink)}
+.hero{max-width:1180px;margin:0 auto;padding:56px 16px 32px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(34px,6vw,60px);line-height:1.05;max-width:760px}
+.hero p{color:var(--muted);margin-top:14px;max-width:560px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.chip{border:1px solid var(--line);background:var(--card);padding:8px 16px;border-radius:999px;font-size:14px;cursor:pointer}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{max-width:1180px;margin:0 auto;padding:8px 16px 64px;display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(60,40,20,.08)}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#eee5d9}
+.card .b{padding:14px 16px 18px}
+.card h3{font-size:16px;font-weight:600}
+.card .meta{font-size:13px;color:var(--muted);margin-top:2px}
+.price{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--accent);margin-top:8px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+.trust{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust .in{max-width:1180px;margin:0 auto;padding:28px 16px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.trust b{display:block;font-size:15px}
+.trust span{font-size:13px;color:var(--muted)}
+footer{max-width:1180px;margin:0 auto;padding:28px 16px 40px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(30,22,16,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.open{display:flex}
+.sheet{background:var(--card);border-radius:18px;max-width:920px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr}
+.sheet img{width:100%;height:100%;object-fit:cover;min-height:320px}
+.sheet .c{padding:26px 24px;position:relative}
+.x{position:absolute;top:12px;right:14px;border:0;background:none;font-size:26px;cursor:pointer;color:var(--muted)}
+.sheet h2{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;line-height:1.1;padding-right:26px}
+.specs{margin:14px 0;font-size:14px;color:var(--muted)}
+.specs div{padding:4px 0;border-bottom:1px dashed var(--line)}
+.desc{font-size:14px;white-space:pre-line;margin-bottom:16px}
+form{display:grid;gap:10px}
+input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:70px;resize:vertical}
+button.buy{background:var(--ink);color:#fff;border:0;padding:14px;border-radius:10px;font:600 15px Inter,sans-serif;cursor:pointer}
+button.buy:disabled{opacity:.6}
+.note{font-size:12px;color:var(--muted)}
+.ok{background:#eaf3ec;color:var(--ok);padding:14px;border-radius:10px;font-size:14px;display:none}
+.ai-tag{display:inline-block;font-size:11px;background:#f0e6da;color:var(--accent);padding:3px 8px;border-radius:6px;margin-top:6px}
+@media(max-width:720px){.sheet{grid-template-columns:1fr}.sheet img{min-height:0;aspect-ratio:4/5}nav{display:none}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a class="logo" href="#">Ocaq<span>.</span>Home</a>
+  <nav><a href="#kolleksiya">Kolleksiya</a><a href="#haqqimizda">Haqqımızda</a><a href="https://instagram.com/ocaq.home" target="_blank" rel="noopener">Instagram</a></nav>
+</div></header>
+
+<section class="hero">
+  <h1>Evin ən isti küncü — Bakıda hazırlanan yumşaq mebel</h1>
+  <p>Divan, kreslo və çarpayılar. Hər məhsul sifarişlə, öz sexımızdə istehsal olunur — ölçü və parçanı sən seçirsən.</p>
+  <div class="chips" id="chips">
+    <button class="chip on" data-c="all">Hamısı</button>
+    <button class="chip" data-c="divan">Divan</button>
+    <button class="chip" data-c="kreslo">Kreslo</button>
+    <button class="chip" data-c="çarpayı">Çarpayı</button>
+  </div>
+</section>
+
+<main class="grid" id="kolleksiya"><div class="empty">Yüklənir…</div></main>
+
+<section class="trust" id="haqqimizda"><div class="in">
+  <div><b>Öz sexımız</b><span>Bakıda, peşəkar ustalar tərəfindən</span></div>
+  <div><b>Fərdi ölçü</b><span>Ölçü, parça, rəng — sənin seçimin</span></div>
+  <div><b>Pulsuz çatdırılma</b><span>Bakı daxilində</span></div>
+  <div><b>Zəmanət</b><span>Karkas və mexanizmə zəmanət</span></div>
+</div></section>
+
+<footer><span>© Ocaq Home</span><span>Bəzi vizuallar AI ilə hazırlanıb; son məhsul sexdə fərdi istehsal olunur.</span></footer>
+
+<div class="modal" id="modal"><div class="sheet">
+  <img id="m-img" alt="">
+  <div class="c">
+    <button class="x" onclick="closeM()" aria-label="Bağla">×</button>
+    <h2 id="m-name"></h2>
+    <div class="price" id="m-price"></div>
+    <div id="m-tag"></div>
+    <div class="specs" id="m-specs"></div>
+    <div class="desc" id="m-desc"></div>
+    <form id="f">
+      <input name="name" placeholder="Ad, soyad" required>
+      <input name="phone" placeholder="Telefon (+994 …)" required pattern="[+0-9 ()-]{9,}">
+      <input name="address" placeholder="Ünvan (rayon, küçə)" required>
+      <textarea name="note" placeholder="Qeyd: ölçü, parça, rəng istəyi (istəyə görə)"></textarea>
+      <button class="buy" type="submit">Sifariş et</button>
+      <div class="note">Ödəniş: çatdırılmada və ya kartla. Menecer 30 dəqiqə ərzində zəng edəcək.</div>
+      <div class="ok" id="ok">✅ Sifarişin qəbul olundu! Tezliklə zəng edəcəyik.</div>
+    </form>
+  </div>
+</div></div>
+
+<script>
+// === AYARLAR ===
+const SUPABASE_URL = "https://mqzyjwrhqjzhhfpjztob.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_l0xZZLMVs814J1_FucnEkw__R-6lCM8";
+const ORDER_WEBHOOK = "PASTE_N8N_WEBHOOK_URL"; // n8n "Ocaq Home — Orders" workflow-un Production URL-i
+
+let items = [], current = null, filter = "all";
+const $ = s => document.querySelector(s);
+const fmt = n => n ? Number(n).toLocaleString("az-AZ") + " ₼" : "Qiymət sorğu ilə";
+const catOf = p => ((p.brief && p.brief.category) || "").toLowerCase();
+
+async function load(){
+  try{
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/posts?select=id,name,price_azn,image_url,caption,brief,mode&ig_media_id=not.is.null&order=created_at.desc&limit=60`,
+      { headers:{ apikey:SUPABASE_PUBLISHABLE_KEY } });
+    items = await r.json();
+    if(!Array.isArray(items)) throw new Error(JSON.stringify(items));
+  }catch(e){ items = []; console.error(e); }
+  render();
+  const id = new URLSearchParams(location.search).get("p");
+  if(id){ const p = items.find(x => String(x.id) === id); if(p) openM(p); }
+}
+
+function render(){
+  const list = items.filter(p => filter === "all" || catOf(p).includes(filter));
+  $("#kolleksiya").innerHTML = list.length ? list.map(p => `
+    <article class="card" data-id="${p.id}">
+      <img src="${p.image_url}" alt="${esc(p.name||"")}" loading="lazy">
+      <div class="b"><h3>${esc(p.name||"Ocaq Home")}</h3>
+      <div class="meta">${esc([p.brief?.fabric,p.brief?.color].filter(Boolean).join(" · "))}</div>
+      <div class="price">${fmt(p.price_azn)}</div></div>
+    </article>`).join("") : `<div class="empty">Tezliklə yeni məhsullar.</div>`;
+  document.querySelectorAll(".card").forEach(c => c.onclick = () => openM(items.find(x => String(x.id) === c.dataset.id)));
+}
+
+function openM(p){
+  current = p;
+  $("#m-img").src = p.image_url; $("#m-img").alt = p.name || "";
+  $("#m-name").textContent = p.name || "Ocaq Home";
+  $("#m-price").textContent = fmt(p.price_azn);
+  $("#m-tag").innerHTML = p.mode === "ai" ? `<span class="ai-tag">AI vizual · sifarişlə istehsal</span>` : "";
+  const b = p.brief || {};
+  $("#m-specs").innerHTML = [["Parça",b.fabric],["Rəng",b.color],["Ölçü",b.dimensions_cm && b.dimensions_cm + " sm"]]
+    .filter(x => x[1]).map(x => `<div>${x[0]}: <b>${esc(x[1])}</b></div>`).join("");
+  $("#m-desc").textContent = (p.caption || "").split("#")[0].trim();
+  $("#ok").style.display = "none"; $("#f").reset(); $("#f .buy").disabled = false;
+  $("#modal").classList.add("open");
+  history.replaceState(null, "", "?p=" + p.id);
+}
+function closeM(){ $("#modal").classList.remove("open"); history.replaceState(null, "", location.pathname); }
+$("#modal").onclick = e => { if(e.target.id === "modal") closeM(); };
+
+$("#f").onsubmit = async e => {
+  e.preventDefault();
+  const btn = $("#f .buy"); btn.disabled = true; btn.textContent = "Göndərilir…";
+  const d = Object.fromEntries(new FormData(e.target));
+  try{
+    const r = await fetch(ORDER_WEBHOOK, { method:"POST", headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ ...d, post_id: current.id, product: current.name, amount_azn: current.price_azn }) });
+    if(!r.ok) throw new Error(r.status);
+    $("#ok").style.display = "block"; btn.textContent = "Göndərildi";
+  }catch(err){
+    btn.disabled = false; btn.textContent = "Sifariş et";
+    alert("Xəta baş verdi. Zəhmət olmasa Instagram-da yazın: @ocaq.home");
+  }
+};
+
+document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+  document.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
+  c.classList.add("on"); filter = c.dataset.c; render();
+});
+function esc(s){ return String(s).replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+load();
+</script>
+</body>
+</html>
