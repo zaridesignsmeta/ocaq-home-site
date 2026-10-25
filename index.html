@@ -116,7 +116,7 @@ button.buy:disabled{opacity:.6}
 // === AYARLAR ===
 const SUPABASE_URL = "https://mqzyjwrhqjzhhfpjztob.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_l0xZZLMVs814J1_FucnEkw__R-6lCM8";
-const ORDER_WEBHOOK = "PASTE_N8N_WEBHOOK_URL"; // n8n "Ocaq Home — Orders" workflow-un Production URL-i
+const ORDER_WEBHOOK = "https://jafarzade1990.app.n8n.cloud/webhook/ocaq-order"; // n8n "Ocaq Home — Orders" workflow-un Production URL-i
 
 let items = [], current = null, filter = "all";
 const $ = s => document.querySelector(s);
@@ -175,7 +175,7 @@ $("#f").onsubmit = async e => {
     $("#ok").style.display = "block"; btn.textContent = "Göndərildi";
   }catch(err){
     btn.disabled = false; btn.textContent = "Sifariş et";
-    alert("Xəta baş verdi. Zəhmət olmasa Instagram-da yazın: @ocaq.home");
+    alert("Xəta baş verdi. Zəhmət olmasa WhatsApp-a yazın: 050 444 09 00");
   }
 };
 
